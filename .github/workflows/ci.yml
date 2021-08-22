@@ -15,8 +15,8 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{runner.os}}-node-${{hashFiles('**/package.json')}}
-          restore-key: |
+          key: ${{runner.os}}-node-${{ hashFiles('**/package.json') }}
+          restore-keys: |
             ${{runner.os}}-node-
       - name: Install specific nodejs version
         uses: actions/setup-node@v1
