@@ -32,9 +32,20 @@ jobs:
         run: npm test -- --coverage
         env:
           CI: true
+      - name: upload test coverage
+        uses: actions/upload-artifact@v1
+        with:
+          name: code-coverage
+          path: coverage
       - name: Build project
         if: github.event_name == 'push'
         run: npm run build
+      - name: Uplade build folder
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: build
       - name: Deploy to stagging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain wry-hot.surge.sh
