@@ -11,6 +11,13 @@ jobs:
     steps:
       - name: pull our code from the current repo and branch
         uses: actions/checkout@v2
+      - name: cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{runner.os}}-node-${{hashFiles('**/package.json')}}
+          restore-key: |
+            ${{runner.os}}-node-
       - name: Install specific nodejs version
         uses: actions/setup-node@v1
         with:
