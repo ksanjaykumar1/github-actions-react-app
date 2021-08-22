@@ -27,7 +27,7 @@ jobs:
           CI: true
       - name: Build project
         if: github.event_name == 'push'
-        run: npm build
+        run: npm run build
       - name: Deploy to stagging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain wry-hot.surge.sh
