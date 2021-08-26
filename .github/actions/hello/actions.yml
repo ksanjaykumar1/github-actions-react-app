@@ -1,0 +1,17 @@
+name: Hello
+author: Sanjay Kumar
+description: To greet people
+inputs:
+  who-to-greet:
+    description: "who to greet"
+    required: true
+    default: Sanjay
+outputs:
+  time:
+    description: "The greeting time"
+
+# Here the actions is javascript actions , the other type of action available is docker
+runs:
+  using: "node12"
+  # index.js file will be executed when the actions runs
+  main: "dist/index.js"
